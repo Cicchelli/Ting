@@ -17,8 +17,6 @@ class Queue(AbstractQueue):
         return removed_value
 
     def search(self, index):
-        list_size = len(self._data)
-        if index in range(list_size):
-            return self._data[index]
-        else:
-            raise IndexError("Invalid index")
+        if index < 0 or index >= len(self._data):
+            raise IndexError("ivalid index")
+        return self._data[index]
