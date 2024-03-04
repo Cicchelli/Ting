@@ -12,11 +12,11 @@ class Queue(AbstractQueue):
         self._data.append(value)
 
     def dequeue(self):
-        removed_value = self._data[0]
-        del self._data[0]
-        return removed_value
+        if not self._data:
+            raise IndexError("Fila vazia, impossível remover elementos")
+        return self._data.pop(0)
 
     def search(self, index):
-        if index < 0 or index >= len(self._data):
-            raise IndexError("ivalid index")
+        if not 0 <= index < len(self._data):
+            raise IndexError("Índice Inválido ou Inexistente")
         return self._data[index]
